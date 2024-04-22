@@ -1,0 +1,48 @@
+<!-- user/imagePage.ejs -->
+<% console.log(imagePath) %>
+<div id="imagePopup" class="  flex justify-center items-center">
+    <div class="bg-white dark:bg-gray-900 p-8 max-w-2xl rounded-lg">
+      <img id="popupImage" src="./uploads/<%= imagePath %>" alt="Image" class="w-full h-auto" />
+      <div class="mt-4 flex justify-center">
+        <a id="downloadBtn" href="./uploads/<%= imagePath %>" download="image.jpg" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Download</a>
+      </div>
+      <button id="closeBtn" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+</div>
+<script>
+// Add this script to your frontend code
+document.addEventListener("DOMContentLoaded", function() {
+  const imagePopup = document.getElementById('imagePopup');
+  const closeBtn = document.getElementById('closeBtn');
+
+  // Function to open the popup
+  function openPopup() {
+    console.log("Opening popup");
+    imagePopup.classList.remove('hidden');
+  }
+
+  // Function to close the popup
+  function closePopup() {
+    console.log("Closing popup");
+    imagePopup.classList.add('hidden');
+  }
+
+  // Event listener for opening the popup
+  document.querySelectorAll('.image-preview').forEach(function(el) {
+    el.addEventListener('click', function() {
+      console.log("Image preview clicked");
+      openPopup();
+    });
+  });
+
+  // Event listener for closing the popup
+  closeBtn.addEventListener('click', function() {
+    console.log("Close button clicked");
+    closePopup();
+  });
+});
+</script>
