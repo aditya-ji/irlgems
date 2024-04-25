@@ -37,7 +37,7 @@ function loginController() {
             console.error(err);
             return;
           }
-          res.redirect('/admin');
+          res.redirect('/');
         });
       }
       
